@@ -27,16 +27,16 @@ ffi = require 'ffi'
 
 local structs = {}
 
-return function(name, structdef, metadef)
+return function(name, structdef)
     assert(type(name) == "string", 
         "Argument #1 expected to be a String, Got "..type(name)
     )
     assert(type(structdef) == "table", 
         "Argument #2 expected to be a Table, Got "..type(name)
     )
-    local metadef = assert(type(metadef) == "table" or type(metadef) == "nil", 
+    --[[local metadef = assert(type(metadef) == "table" or type(metadef) == "nil", 
         "Argument #3 expected to be a Table or Nil, Got "..type(name)
-    ) or {}
+    ) or {}]]
 
     assert(not name:find("%s"), "Name must not contain any spaces!")
 
