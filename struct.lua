@@ -34,12 +34,8 @@ return function(name, structdef)
     assert(type(structdef) == "table", 
         "Argument #2 expected to be a Table, Got "..type(name)
     )
-    --[[local metadef = assert(type(metadef) == "table" or type(metadef) == "nil", 
-        "Argument #3 expected to be a Table or Nil, Got "..type(name)
-    ) or {}]]
 
     assert(not name:find("%s"), "Name must not contain any spaces!")
-
     assert(not structs[name], "Struct '"..name.."' was already defined!")
     structs[name] = true
 
