@@ -50,8 +50,8 @@ return function(name, structdef)
         end
         data = data:sub(1, -3) .. "; "
     end
-    
+
     ffi.cdef(("typedef struct { %s } %s;"):format(data, name))
 
-    return loadstring("return function(data)\nlocal str = ffi.new('"..name.."')\nfor k, v in pairs(data) do\nstr[k] = v\nend\nreturn str\nend")()
+    return loadstring("return function(...)\nreturn ffi.new('"..name.."', ...)\nend")()
 end
