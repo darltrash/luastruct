@@ -42,16 +42,16 @@ return function(name, structdef)
     local data = ""
     for _, v in ipairs(structdef) do
         assert(v.type, "Definition must contain type! Example: {'x', type = 'int'}")
-        assert(not v.type:gsub("%s", ""):find("%W"), ("'%s' haves non-alphanumeric characters!"):format(v.type))
+        assert(not v.type:gsub("%s", ""):find("%W"), ("'%s' haves non-valid characters!"):format(v.type))
         data = data .. v.type .. " "
         for k2, v2 in ipairs(v) do
-            assert(not v2:gsub("%*", ""):find("%W"), ("'%s' haves non-alphanumeric characters!"):format(v2)) -- Name
+            assert(not v2:gsub("%*", ""):find("%W"), ("'%s' haves non-valid characters!"):format(v2))
             data = data .. v2 .. ", " 
         end
         data = data:sub(1, -3) .. "; "
     end
 
-    ffi.cdef(("typedef struct { %s } %s;"):format(data, name))
+    ffi.cdef("typedef struct { "..data.." } "..name..";")
 
     return loadstring("return function(...)\nreturn ffi.new('"..name.."', ...)\nend")()
 end
