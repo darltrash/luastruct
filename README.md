@@ -3,19 +3,22 @@ A little LuaFFI wrapper for making C structs on Lua.
 
 ## Example:
 ```Lua
-struct = require 'struct'
 vec3 = struct("vec3", {
-	{"x", "y", "z", type = "unsigned int"}
+    {"x", "y", "z", type = "unsigned int"}
 })
 
 a = vec3{
-	x = 100,
-	y = 20,
-	z = 70
+    x = 100,
+    y = 20,
+    z = 70
 }
-
 a.x = 64
+
+b = vec3(10, 30, 60)
+b.z = 0
+
 print(a.x, a.y, a.z)
+print(b.x, b.y, b.z)
 ```
 
 ## How to Use:
@@ -30,6 +33,8 @@ local <"INSTANCE" VAR> = <STRUCT VAR>{ -- "Instanciates" a existing C struct
 	<EXISTING PROPERTY VAR NAME> = <VALUE>, -- Defines value of existing property
 	<...>                                   -- Etc.
 }
+
+local <"INSTANCE" VAR> = <STRUCT VAR>(<VALUES>) -- "Instanciates" a existing C struct
 ```
 
 ## Requirements:
