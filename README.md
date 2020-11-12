@@ -18,7 +18,7 @@ a.x = 64
 print(a.x, a.y, a.z)
 ```
 
-## Documentation:
+## How to Use:
 ```Lua
 local struct = require 'struct' -- This library returns a function that generates a struct
 local <STRUCT VAR> = struct("<STRUCT NAME>", { -- Defines a new struct
@@ -35,7 +35,7 @@ local <"INSTANCE" VAR> = <STRUCT VAR>{ -- "Instanciates" a existing C struct
 ## Requirements:
 LuaFFI and Lua5.1+ (LuaJIT 2+)
 
-## Usage:
+## How to Install:
 - Download the "`struct.lua`" file and add it into your project.
 - Require it
 - Done!
